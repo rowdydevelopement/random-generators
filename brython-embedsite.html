@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>ROWDYBOT</title>
+  <!-- Brython runtime (this allows Python in browser) -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.11.0/brython.min.js"></script>
+</head>
+<body onload="brython()">
+  <h1>🤖 ROWDYBOT</h1>
+
+  <!-- Input fields -->
+  <label>What is your name?</label><br>
+  <input id="name" type="text"><br><br>
+
+  <label>Choose: number, decimal, or fortune</label><br>
+  <input id="choice" type="text"><br><br>
+
+  <button id="run">Start</button>
+  <p id="response"></p>
+
+  <label>Has payment been inserted? (yes or no)</label><br>
+  <input id="payment" type="text"><br><br>
+
+  <button id="paybtn">Submit Payment</button>
+  <p id="payresponse"></p>
+
+  <!-- Python script using Brython -->
+  <script type="text/python">
+    from browser import document
+    import random
+
+    fortunes = [
+        "You will die at the age of seventy years, five months, 3 days...",
+        "Good things await you within the next 24 hours.",
+        "Watch your back...",
+        "You will die alone.",
+        "You will or have found love.",
+        "You will experience burning the next time you pee.",
+        "You need to get a new haircut.",
+        "You will either be great or fail.",
+        "The god of twerking smiles upon you!",
+        "You will have good luck today",
+        "Something exciting will happen on Thursday",
+        "You will have a fun adventure",
+        "You will make a best friend",
+        "Someone will make you smile today",
+        "The 8th of next month is your day",
+        "Someone new will come into your life soon",
+        "A great fortune is a great servitude",
+        "Whatever may happen, every kind of fortune is to be overcome by bearing it"
+    ]
+
+    cusses = ["$4!7", "@#%%@@@@#&", "#$%@", "@#!!!$", "#^^#@", "!#%@$", "%^&&*", "*&^^*((@#"]
+
+    def activate_bot(event):
+        name = document["name"].value.strip().lower()
+        choice = document["choice"].value.strip().lower()
+
+        response = ""
+
+        if name == "penny":
+            response += "I HEAR YOU ARE THE CREATOR OF THE GRAND LEADER. GOOD JOB.<br>"
+        else:
+            response += f"NICE TO MEET YOU {name.upper()}<br>"
+
+        if choice == "number":
+            response += f"Random Number: {random.randint(0, 100)}<br>"
+        elif choice == "decimal":
+            response += f"Random Decimal: {random.uniform(0, 100):.2f}<br>"
+        elif choice == "fortune":
+            response += f"Fortune: {random.choice(fortunes)}<br>"
+        else:
+            response += "SYSTEM ERROR: Unknown option.<br>"
+
+        response += "THANK YOU FOR YOUR PATRONAGE. THAT WILL BE $1.<br>PLEASE INSERT PAYMENT.<br>"
+        document["response"].html = response
+
+    def check_payment(event):
+        answer = document["payment"].value.strip().lower()
+        if answer == "yes":
+            document["payresponse"].text = "Thank you for choosing ROWDYBOT."
+        elif answer == "no":
+            document["payresponse"].text = "Insert money, you little " + random.choice(cusses)
+        else:
+            document["payresponse"].text = "SYSTEM ERROR"
+
+    # Hook Python functions to button clicks
+    document["run"].bind("click", activate_bot)
+    document["paybtn"].bind("click", check_payment)
+  </script>
+</body>
+</html>
