@@ -30,12 +30,9 @@ def greet(name):
 		print("I HEAR YOU ARE THE CREATOR OF THE GRAND LEADER.GOOD JOB.")
 	else:
 		print(f"NICE TO MEET YOU {name}")
-greet(name)
-
-		
+greet(name)	
 print("I CAN DO ONE OF THREE RANDOM ALGORITHMS.")
 print("CHOOSE FROM: NUMBER,DECIMAL, OR FORTUNE")
-
 choice=input()
 def algorithm(choice):
   if choice=="number":
@@ -46,9 +43,7 @@ def algorithm(choice):
     print(decimal)
   else:
     sys.exit("system error. Does not compute.")
- 
 algorithm(choice)
-
 print("THANK YOU FOR YOUR PATRONAGE.THAT WILL BE $1.")
 print("PLEASE INSERT PEYMENT INTO NEARBY BOX.")
 print("HAS PAYMENT BEEN INSERTED?")
@@ -71,5 +66,4 @@ def yesorno(answer):
     else:
       sys.exit("system error")
 yesorno(answer) 
-
 sys.exit("GOODBYE.")
