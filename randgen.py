@@ -1,5 +1,6 @@
 import random
 import sys
+#imports neccesary items
 fortunes=[
   "you will die at the age of seventy years, five months,3 days,9 hours, 4 minutes, and 2.31 seconds at 8 pm in Houston,Texas 6 hours, 3 minutes, and 8.79 seconds after being hit by a 2050 ford 350 traveling down fondren road at 60.32 mph.",
     "Good things await you within the next 24 hours.",
@@ -20,9 +21,13 @@ fortunes=[
     "A great fortune is a great servitude",
     "Whatever may happen, every kind of fortune is to be overcome by bearing it"]
 fortune=random.choice(fortunes)
+#selects one of the random fortunes
 number=random.randint(0,100)
+#generates a random number from 1 to 100
 decimal=random.uniform(0,100)
+#includes decimals
 print("type lowcase pls")
+#best comprehends lowercase
 print("HELLO.WHAT IS YOUR NAME?")
 name=input()
 def greet(name):
@@ -30,6 +35,7 @@ def greet(name):
 		print("I HEAR YOU ARE THE CREATOR OF THE GRAND LEADER.GOOD JOB.")
 	else:
 		print(f"NICE TO MEET YOU {name}")
+#penny is rowdy piper's mom
 greet(name)	
 print("I CAN DO ONE OF THREE RANDOM ALGORITHMS.")
 print("CHOOSE FROM: NUMBER,DECIMAL, OR FORTUNE")
@@ -55,7 +61,13 @@ cusses = [
 "#^^#@",
 "!#%@$",
 "%^&&*",
-"*&^^*((@#",]
+"*&^^*((@#",
+"!@#$#@%%",
+"ERR@$$$",
+"^&**%$",
+"$#%@%",
+"QSHTIEWQFT",
+"T$#%@#"]
 cuss=random.choice(cusses)
 answer = input("Tell me here.Say YES or NO:")
 def yesorno(answer):
@@ -65,5 +77,7 @@ def yesorno(answer):
       print("Insert money, you little " + cuss)   
     else:
       sys.exit("system error")
-yesorno(answer) 
+yesorno(answer)
+while answer=="no":
+	yesorno(answer)
 sys.exit("GOODBYE.")
